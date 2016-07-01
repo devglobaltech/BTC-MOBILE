@@ -1,0 +1,17 @@
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\MySql.Data.CF.dll
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\Btc.exe
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\Btc.pdb
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\Btc.xml
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.Form1.resources
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.Resources.resources
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.vbproj.GenerateResource.Cache
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.exe
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.xml
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.pdb
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.FormDS.resources
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.frmIngresoBultos.resources
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\fileNOK.wav
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\fileOk.wav
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\btcConfig.dat
+C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.frmIngresoBultosFaltantes.resources
