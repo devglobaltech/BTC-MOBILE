@@ -241,6 +241,10 @@ Public Class cRecepcionBultos
         Dim cant_bultos As String = "", Dt As New DataTable
 
         Try
+            If ThrdEnProgreso Then
+                Return True
+            End If
+
             ThrdEnProgreso = True
             For i = 0 To DSLecturas.Tables(0).Rows.Count - 1
 
@@ -323,6 +327,10 @@ Public Class cRecepcionBultos
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, Me.Titulo)
+        Finally
+            Thrd = Nothing
+            Thrd = New Thread(AddressOf ConfirmarRegistros)
+            ThrdEnProgreso = False
         End Try
     End Function
 

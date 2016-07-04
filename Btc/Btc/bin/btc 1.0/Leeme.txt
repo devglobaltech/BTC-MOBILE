@@ -1,0 +1,12 @@
+Como configurar el archivo btcConfig.dat.
+
+El archivo debe expresar los valores separados por ";" (punto y coma)
+En primer lugar la direccion ip del servidor, en segundo lugar la base de datos, en tercer lugar el usuario, en cuarto lugar la password,
+ en quinto lugar el tiempo en que se guardaran los registros automaticamente (expresado en milisegundos) y finalmente la cantidad de lecturas
+que se debe hacer antes de guardar.
+
+Quedaria conformado de la siguiente forma:
+IP_SERVIDOR; NOMBRE_BD;USUARIO_BD; PASSWORD_BD;TIEMPO_GUARDADO; CANTIDAD_LECTURAS;
+
+Ejemplo Real:
+7.141.6.99;btc;fohet;homero;120000;10;

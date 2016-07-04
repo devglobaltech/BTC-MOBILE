@@ -98,6 +98,9 @@ Public Class frmIngresoBultos
     Private Sub Faltantes()
         Dim f As New frmIngresoBultosFaltantes
         Try
+            If cLN.RegistrosSinConfirmar > 0 Then
+                cLN.ConfirmarRegistros()
+            End If
             f.ShowDialog()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, Titulo)

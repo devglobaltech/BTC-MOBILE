@@ -2,7 +2,7 @@ DELIMITER $$
 
 CREATE
     /*[DEFINER = { user | CURRENT_USER }]*/
-    PROCEDURE `btc`.`proc_ins_bulto_leido`(	p_idpedido	INT(11),
+    PROCEDURE `proc_ins_bulto_leido`(	p_idpedido	INT(11),
 						p_nro_remito	VARCHAR(100),
 						p_nro_bulto	VARCHAR(100),
 						p_cant_bultos	INT(11)
