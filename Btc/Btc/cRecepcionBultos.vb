@@ -22,8 +22,6 @@ Public Class cRecepcionBultos
 
 
     Public Sub New()
-
-
         DSLecturas = New DataSet
         CreateDSLecturas()
     End Sub
