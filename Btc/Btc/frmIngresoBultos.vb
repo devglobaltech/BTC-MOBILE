@@ -5,16 +5,13 @@ Public Class frmIngresoBultos
 
     Private cLN As cRecepcionBultos
 
-    Private Trd As Thread
+    'Private Trd As Thread
 
     Public Sub New()
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        cLN = New cRecepcionBultos
-        cLN.SonidoNOK = SNOK
-        cLN.Database = oBase
-        cLN.Titulo = Titulo
+
     End Sub
 
     Protected Overrides Sub Finalize()
@@ -32,6 +29,14 @@ Public Class frmIngresoBultos
     End Sub
 
     Private Sub frmIngresoBultos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        cLN = New cRecepcionBultos
+        cLN.CantidadLecturas = CantidadLecturas
+        cLN.SonidoNOK = SNOK
+        cLN.Database = oBase
+        cLN.Titulo = Titulo
+        Me.Timer.Interval = TiempoGuardado
+
         Me.Text = Titulo & "- Ing. Bultos."
         cLN.LlenarDataset()
         Me.lblDOCK.Text = ""

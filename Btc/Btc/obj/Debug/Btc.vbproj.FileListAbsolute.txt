@@ -15,3 +15,20 @@ C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\fileNOK.wav
 C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\fileOk.wav
 C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\bin\Debug\btcConfig.dat
 C:\Users\Sebastian\Desktop\BTC Mobile\Btc\Btc\obj\Debug\Btc.frmIngresoBultosFaltantes.resources
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\fileNOK.wav
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\fileOk.wav
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\MySql.Data.CF.dll
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\btcConfig.dat
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\Btc.exe
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\Btc.pdb
+C:\Work\BTC-MOBILE\Btc\Btc\bin\Debug\Btc.xml
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.Form1.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.FormDS.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmIngresoBultos.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmIngresoBultosFaltantes.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.Resources.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.vbproj.GenerateResource.Cache
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.exe
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.xml
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.pdb

@@ -8,6 +8,8 @@ Module mGeneral
     Public Const Titulo As String = "BTC - Mobile"
     Public oBase As New cDatabase
     Public SNOK As New cPlaySound
+    Public TiempoGuardado As Long = 0
+    Public CantidadLecturas As Long = 0
 
     Public Sub Main()
         Dim frm As New frmIngresoBultos, Path = AppPath(True)
@@ -44,7 +46,8 @@ Module mGeneral
         'Falta 1. Levantar la cadena del connection string.
         '---------------------------------------------------
         Dim splitChar As String = ";", Line As String = ""
-        Dim MyPos As Integer = 0, MyServer As String = "",MyName As String = ""
+        Dim MyPos As Integer = 0, MyServer As String = "", MyName As String = ""
+        'IpServer(0) - Base de datos (1) - Usuario(2) - Password(3) - Tiempo de impacto BD MS(4) - Cantidad Lecturas(5)
 
 
         Dim sfile As String = AppPath(True) & "btcConfig.dat"
@@ -60,9 +63,17 @@ Module mGeneral
                 Line = Fs.ReadLine
                 If Not Line Is Nothing Then
                     Dim Array() As String = Split(Line, ";")
-
                     StringConnection = "Server=" & Array(0) & ";Database=" & Array(1) & ";Uid=" & Array(2) & ";Pwd=" & Array(3) & ";"
-
+                    Try
+                        TiempoGuardado = Array(4)
+                    Catch ex As Exception
+                        TiempoGuardado = 120000
+                    End Try
+                    Try
+                        CantidadLecturas = Array(5)
+                    Catch ex As Exception
+                        CantidadLecturas = 50
+                    End Try
                     Return True
                 End If
             Loop Until Trim(Line) = ""

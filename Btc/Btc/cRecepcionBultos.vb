@@ -9,7 +9,8 @@ Public Class cRecepcionBultos
     'sirve para que se sincronize cada 50 registros.
     '===================================================
     Private ThrdEnProgreso As Boolean = False
-    Private Const Cant_Registros_buffer As Integer = 50
+    Private Cant_Registros_buffer As Long = 0
+
     '===================================================
     Private oBase As cDatabase
     Private Data As New DataSet
@@ -20,8 +21,9 @@ Public Class cRecepcionBultos
     Private cSndNOK As cPlaySound
 
 
-
     Public Sub New()
+
+
         DSLecturas = New DataSet
         CreateDSLecturas()
     End Sub
@@ -33,6 +35,15 @@ Public Class cRecepcionBultos
         cSndNOK = Nothing
         MyBase.Finalize()
     End Sub
+
+    Public Property CantidadLecturas() As Long
+        Get
+            Return Cant_Registros_buffer
+        End Get
+        Set(ByVal value As Long)
+            Cant_Registros_buffer = value
+        End Set
+    End Property
 
     Public Property SonidoOK() As cPlaySound
         Get
@@ -144,6 +155,11 @@ Public Class cRecepcionBultos
                 Throw New Exception(MsgEtiErr)
             End If
 
+            If Not IsNumeric(idpedido) Then
+                cSndNOK.PlayNOK()
+                Throw New Exception(MsgEtiErr)
+            End If
+
             'Por si paso mucho tiempo desde la ultima descarga del pedido y necesito recuperar los datos otra vez.
             SearchRows = Data.Tables(0).Select("idpedido = '" & idpedido & "'")
             If SearchRows.Length = 0 Then
@@ -162,6 +178,7 @@ Public Class cRecepcionBultos
                     Lst.Items.Add("Nombre: " & SearchRows(0).Item(View.nombre))
                     Lst.Items.Add("Numero de remito: " & SearchRows(0).Item(View.nro_remito)).ToString()
                     Lst.Items.Add("Localidad: " & SearchRows(0).Item(View.idlocalidad))
+                    Lst.Items.Add("Referencia: " & SearchRows(0).Item(View.idreferencia))
                     Lst.Items.Add("")
                     Lst.Items.Add("Cant.Total Bultos: " & SearchRows(0).Item(View.cantidad_bultos))
                     RegExistente = DSLecturas.Tables(0).Select("nro_bulto = '" & Lectura & "'")
@@ -246,14 +263,12 @@ Public Class cRecepcionBultos
                     End Try
                 End If
             Next i
-            Thrd.Abort()
-
             Return True
         Catch tex As Threading.ThreadAbortException
             ThrdEnProgreso = False
         Catch ex As Exception
             ThrdEnProgreso = False
-            MsgBox(ex.Message, MsgBoxStyle.Critical, Me.Titulo)
+            'MsgBox(ex.Message, MsgBoxStyle.Critical, Me.Titulo)
         Finally
             Thrd = Nothing
             Thrd = New Thread(AddressOf ConfirmarRegistros)

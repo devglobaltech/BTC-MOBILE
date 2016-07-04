@@ -48,6 +48,7 @@ Partial Public Class frmIngresoBultosFaltantes
         Me.ControlBox = False
         Me.Controls.Add(Me.DataGrid1)
         Me.Controls.Add(Me.btnSalir)
+        Me.KeyPreview = True
         Me.Name = "frmIngresoBultosFaltantes"
         Me.Text = "Informe de Faltantes"
         Me.ResumeLayout(False)
