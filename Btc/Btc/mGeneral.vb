@@ -8,6 +8,7 @@ Module mGeneral
     Public Const Titulo As String = "BTC - Mobile"
     Public oBase As New cDatabase
     Public SNOK As New cPlaySound
+
     Public TiempoGuardado As Long = 0
     Public CantidadLecturas As Long = 0
 

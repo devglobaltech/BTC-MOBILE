@@ -4,19 +4,23 @@ Imports System.Threading
 Public Class frmIngresoBultos
 
     Private cLN As cRecepcionBultos
+    Private Const CaracterFinal As String = "#"
+    Private UltimaLectura As String = ""
 
-    'Private Trd As Thread
 
     Public Sub New()
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
     End Sub
 
     Protected Overrides Sub Finalize()
         cLN = Nothing
         MyBase.Finalize()
+    End Sub
+
+    Private Sub frmIngresoBultos_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.GotFocus
+        Me.txtBultos.Focus()
     End Sub
 
     Private Sub frmIngresoBultos_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyUp
@@ -54,31 +58,96 @@ Public Class frmIngresoBultos
         If cLN.RegistrosSinConfirmar > 0 Then
             cLN.ConfirmarRegistros()
         End If
-        If MsgBox(Msg, MsgBoxStyle.YesNo, Titulo) = MsgBoxResult.Yes Then Application.Exit()
+        If MsgBox(Msg, MsgBoxStyle.YesNo, Titulo) = MsgBoxResult.Yes Then
+            Application.Exit()
+        Else
+            Me.txtBultos.Focus()
+        End If
+
+    End Sub
+
+    Private Sub txtBultos_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtBultos.GotFocus
+        Me.txtBultos.BackColor = Color.Yellow
     End Sub
 
     Private Sub txtBultos_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtBultos.KeyUp
-        If e.KeyValue = 13 Then
+
+        Dim MyPos As Integer = 0, Continuar As Boolean = False
+        MyPos = InStr(Me.txtBultos.Text, CaracterFinal)
+        If MyPos > 0 Then Continuar = True
+
+        If (e.KeyValue = 13) Or (Continuar) Then
             If Me.txtBultos.Text.Trim <> "" Then
                 procesarLectura()
             End If
         End If
     End Sub
 
+    Private Function CambiarColorPantalla(ByVal Color As System.Drawing.Color) As Boolean
+        Dim backco As System.Drawing.Color, tSleep As Integer = 200, ColorTitulo As System.Drawing.Color
+        Dim ctrl As Control
+        Try
+            backco = Me.BackColor
+            ColorTitulo = Me.lblTitulo.BackColor
+            '1ra. intermitencia
+            For Each ctrl In Me.Controls
+                ctrl.BackColor = Color
+            Next
+            Application.DoEvents()
+            Threading.Thread.Sleep(tSleep)
+
+            '2da. intermitencia
+            For Each ctrl In Me.Controls
+                ctrl.BackColor = backco
+            Next
+            Me.lblTitulo.BackColor = ColorTitulo
+            Application.DoEvents()
+            Threading.Thread.Sleep(tSleep)
+
+            '3ra. intermitencia
+            For Each ctrl In Me.Controls
+                ctrl.BackColor = Color
+            Next
+            Application.DoEvents()
+            Threading.Thread.Sleep(tSleep)
+
+            '4ta. intermitencia
+            For Each ctrl In Me.Controls
+                ctrl.BackColor = backco
+            Next
+            Me.lblTitulo.BackColor = ColorTitulo
+            Application.DoEvents()
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Information, Titulo)
+        End Try
+    End Function
+
     Private Sub procesarLectura()
         Dim MsgBultoError As String = "La etiqueta leida no es correcta!" & vbNewLine & "Por favor verique las etiquetas que esta tomando."
-        Dim Lectura As String = "", Encontro As Boolean = False, strError As String = ""
+        Dim Lectura As String = "", Encontro As Boolean = False, strError As String = "", fError As New frmError
         Try
-            Lectura = Me.txtBultos.Text.Trim.ToUpper
+            Lectura = Replace(Me.txtBultos.Text.Trim.ToUpper, CaracterFinal, "")
+            'If Lectura = UltimaLectura Then
+            '    Me.txtBultos.Text = ""
+            '    Me.txtBultos.Focus()
+            '    Exit Sub
+            'Else
+            '    UltimaLectura = Lectura
+            'End If
             If Not cLN.ValidarLecturaBulto(Lectura) Then
-                SNOK.PlayNOK()
                 Me.txtBultos.Text = ""
-                MsgBox(MsgBultoError, MsgBoxStyle.Exclamation, Titulo)
+                fError.Mensaje = MsgBultoError
+                fError.ShowDialog()
+                Exit Try
             Else
                 'Aqui debo buscar si esta dentro del array.
-                If cLN.InfoLectura(Me.txtBultos.Text.Trim.ToUpper, Me.lblDOCK, Me.lst, Encontro) Then
+                If cLN.InfoLectura(Lectura.ToUpper.Trim, Me.lblDOCK, Me.lst, Encontro) Then
                     If Encontro Then
                         Me.txtBultos.Text = ""
+                        Application.DoEvents()
+                        SNOK.PlayOK()
+                        CambiarColorPantalla(Color.GreenYellow)
                         Me.txtBultos.Focus()
                     End If
                 Else
@@ -88,6 +157,8 @@ Public Class frmIngresoBultos
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, Titulo)
+        Finally
+            fError = Nothing
         End Try
     End Sub
 
@@ -102,6 +173,7 @@ Public Class frmIngresoBultos
                 cLN.ConfirmarRegistros()
             End If
             f.ShowDialog()
+            Me.txtBultos.Focus()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, Titulo)
         Finally
@@ -119,4 +191,11 @@ Public Class frmIngresoBultos
         Me.lblAT.Visible = False
     End Sub
 
+    Private Sub lst_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles lst.GotFocus
+        Me.txtBultos.Focus()
+    End Sub
+
+    Private Sub lst_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lst.SelectedIndexChanged
+
+    End Sub
 End Class

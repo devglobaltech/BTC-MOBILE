@@ -92,6 +92,12 @@
     <Compile Include="FormDS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmError.Designer.vb">
+      <DependentUpon>frmError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmError.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIngresoBultos.Designer.vb">
       <DependentUpon>frmIngresoBultos.vb</DependentUpon>
     </Compile>
@@ -119,6 +125,9 @@
     <EmbeddedResource Include="FormDS.resx">
       <DependentUpon>FormDS.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmError.resx">
+      <DependentUpon>frmError.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIngresoBultos.resx">
       <DependentUpon>frmIngresoBultos.vb</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +151,7 @@
     <Content Include="MySql.Data.CF.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="notification_error.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="btcConfig.dat">

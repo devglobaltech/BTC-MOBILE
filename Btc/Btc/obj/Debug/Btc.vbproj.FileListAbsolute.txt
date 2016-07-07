@@ -32,3 +32,4 @@ C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.vbproj.GenerateResource.Cache
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.exe
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.xml
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.pdb
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmError.resources

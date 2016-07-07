@@ -134,7 +134,7 @@ Public Class cRecepcionBultos
     End Function
 
     Public Function InfoLectura(ByVal Lectura As String, ByRef lblDOCK As Label, ByRef Lst As ListBox, ByRef RegEncontrado As Boolean) As Boolean
-        Dim MsgEtiErr As String = "La etiqueta escaneada es incorrecta."
+        Dim MsgEtiErr As String = "La etiqueta escaneada es incorrecta.", fError As New frmError
         Dim SearchRows() As Data.DataRow, idpedido As String = "", bulto As String = ""
         Dim Search As String = "-", Pos As Integer = 0, Lec As String = Replace(Lectura, " ", "")
         Dim RegExistente() As Data.DataRow
@@ -144,17 +144,17 @@ Public Class cRecepcionBultos
             bulto = Mid(Lec, Pos + 1, Len(Lec))
 
             If bulto.Trim = "" Then
-                cSndNOK.PlayNOK()
+                'cSndNOK.PlayNOK()
                 Throw New Exception(MsgEtiErr)
             End If
 
             If Not IsNumeric(bulto) Then
-                cSndNOK.PlayNOK()
+                'cSndNOK.PlayNOK()
                 Throw New Exception(MsgEtiErr)
             End If
 
             If Not IsNumeric(idpedido) Then
-                cSndNOK.PlayNOK()
+                'cSndNOK.PlayNOK()
                 Throw New Exception(MsgEtiErr)
             End If
 
@@ -194,16 +194,19 @@ Public Class cRecepcionBultos
 
                     End If
                 Else
-                    cSndNOK.PlayNOK()
+                    'cSndNOK.PlayNOK()
                     Throw New Exception("El numero de bulto tomado es incorrecto.")
                 End If
             Else
-                cSndNOK.PlayNOK()
+                'cSndNOK.PlayNOK()
                 Throw New Exception("No existe el numero de pedido " & idpedido)
             End If
             Return True
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, Me.Titulo)
+            fError.Mensaje = ex.Message
+            fError.ShowDialog()
+        Finally
+            fError = Nothing
         End Try
     End Function
 

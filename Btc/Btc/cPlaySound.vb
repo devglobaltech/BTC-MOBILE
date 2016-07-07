@@ -4,17 +4,17 @@ Public Class cPlaySound
 
     Dim miThread As Thread
 
-    'Private Ok As cSnd 'New cSnd(AppPath(True) & "fileOk.wav")
+    Private Ok As cSnd 'New cSnd(AppPath(True) & "fileOk.wav")
     Private NOK As cSnd 'New cSnd(AppPath(True) & "fileNOK.wav")
 
-    'Public Sub PlayOK()
-    '    Try
-    '        miThread = New Thread(New ThreadStart(AddressOf Ok.Play))
-    '        miThread.Start()
-    '        miThread = Nothing
-    '    Catch ex As Exception
-    '    End Try
-    'End Sub
+    Public Sub PlayOK()
+        Try
+            miThread = New Thread(New ThreadStart(AddressOf Ok.Play))
+            miThread.Start()
+            miThread = Nothing
+        Catch ex As Exception
+        End Try
+    End Sub
 
     Public Sub PlayNOK()
         Try
@@ -41,11 +41,11 @@ Public Class cPlaySound
         vNok = AppPath(True) & "fileNOK.wav"
 
         NOK = New cSnd(vNok)
-        'Ok = New cSnd(vOK)
+        Ok = New cSnd(vOK)
     End Sub
 
     Protected Overrides Sub Finalize()
-        'Ok = Nothing
+        Ok = Nothing
         NOK = Nothing
         MyBase.Finalize()
     End Sub

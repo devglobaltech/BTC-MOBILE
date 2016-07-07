@@ -6,6 +6,8 @@ Public Class cDatabase
 #Region "Declaracion de Variables, constantes y Estructuras."
 
     Private Const DatabaseError As String = "Se perdio la conexion con la base de datos."
+    Private Const ErrorPorReintentos As String = "Se completo la cantidad de reintentos de reconexion sin exito. La aplicacion sera cerrada."
+    Private Const ErrorDeConexion As String = "Se perdio la conexion a la base de datos, la aplicacion intentara reconectarse."
     Private Const clsName As String = "BTC - Database."
     Private Conexion As MySqlConnection
     Private Da As MySqlDataAdapter
@@ -67,19 +69,28 @@ Public Class cDatabase
     Public Function VerificarConexion() As Boolean
         Dim Contador As Integer = 0
         Try
+
             Select Case Conexion.State
-                Case ConnectionState.Broken Or ConnectionState.Closed
-                    Contador = 1
+                Case ConnectionState.Broken, ConnectionState.Closed
+                    MsgBox(ErrorDeConexion, MsgBoxStyle.OkOnly, Titulo)
+                    Contador = 0
                     While Contador <> Me.IntentosConexion
                         Try
+                            Conexion.Close()
                             Conexion.Open()
                             If Conexion.State = ConnectionState.Open Then
                                 Return True
                             End If
                         Catch Msc As MySqlException
                         Catch ex As Exception
+                        Finally
+                            Contador = Contador + 1
                         End Try
                     End While
+                    If Contador = Me.IntentosConexion Then
+                        MsgBox(ErrorPorReintentos, MsgBoxStyle.Critical, Titulo)
+                        Application.Exit()
+                    End If
                 Case Else
                     Return True
             End Select
@@ -152,6 +163,10 @@ Public Class cDatabase
 
     Public Function GetDataset(ByRef DS As DataSet, ByVal ComandoSQL As String, ByVal TComando As TipoComando, Optional ByRef strError As String = "") As Boolean
         Try
+            Try
+                Conexion.Ping()
+            Catch ex As Exception
+            End Try
             If VerificarConexion() Then
                 Cmd.CommandText = ComandoSQL
                 If TComando = TipoComando.StoredProcedure Then Cmd.CommandType = CommandType.StoredProcedure
@@ -174,6 +189,10 @@ Public Class cDatabase
 
     Public Function EjecutarSQL(ByVal ComandoSQL As String, ByVal TComando As TipoComando, Optional ByRef strError As String = "") As Boolean
         Try
+            Try
+                Conexion.Ping()
+            Catch ex As Exception
+            End Try
             If VerificarConexion() Then
                 Cmd.CommandText = ComandoSQL
                 If TComando = TipoComando.StoredProcedure Then Cmd.CommandType = CommandType.StoredProcedure
