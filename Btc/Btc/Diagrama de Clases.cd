@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Btc.cDatabase" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAUAAJAAACCAAAAA4AAABAAAQAAAAgCCAgACAgAA=</HashCode>
+      <FileName>cDatabase.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btc.cPlaySound" Collapsed="true">
+    <Position X="0.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACABAAAAAAQAIAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>cPlaySound.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btc.cRecepcionBultos" Collapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Btc.cRecepcionBultos.Tbl" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>cRecepcionBultos.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Btc.cRecepcionBultos.View" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>cRecepcionBultos.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABAQgAAIwEACAEAAABAACAAAACAAARAAAAgAICBAAhU=</HashCode>
+      <FileName>cRecepcionBultos.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btc.cSnd" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAACA=</HashCode>
+      <FileName>cSnd.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btc.frmError">
+    <Position X="0.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAABQgACAAAACAIAAAAAAAEAAoABEACA=</HashCode>
+      <FileName>frmError.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btc.frmIngresoBultos" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAACiAJAxAAACgIIBCAAAQACACBQIACCBEQFA=</HashCode>
+      <FileName>frmIngresoBultos.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Btc.frmIngresoBultosFaltantes" Collapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BBAAACAAACAABAAAAACgAAACAACAAEACABABAAEAAAA=</HashCode>
+      <FileName>frmIngresoBultosFaltantes.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Module Name="Btc.mGeneral" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAABAABAAAAAAAACAAAACAAABAAAAAABAAAABE=</HashCode>
+      <FileName>mGeneral.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="Btc.My.Resources.Resources" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAEAAAAQAAAAAgAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

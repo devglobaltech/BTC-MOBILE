@@ -31,7 +31,7 @@ Partial Public Class frmIngresoBultos
         '
         'btnFaltantes
         '
-        Me.btnFaltantes.Location = New System.Drawing.Point(0, 228)
+        Me.btnFaltantes.Location = New System.Drawing.Point(0, 250)
         Me.btnFaltantes.Name = "btnFaltantes"
         Me.btnFaltantes.Size = New System.Drawing.Size(240, 20)
         Me.btnFaltantes.TabIndex = 0
@@ -39,7 +39,7 @@ Partial Public Class frmIngresoBultos
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(0, 251)
+        Me.btnSalir.Location = New System.Drawing.Point(0, 271)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(240, 20)
         Me.btnSalir.TabIndex = 1
@@ -72,7 +72,7 @@ Partial Public Class frmIngresoBultos
         Me.lst.Items.Add("3 de 16")
         Me.lst.Location = New System.Drawing.Point(0, 92)
         Me.lst.Name = "lst"
-        Me.lst.Size = New System.Drawing.Size(240, 128)
+        Me.lst.Size = New System.Drawing.Size(240, 156)
         Me.lst.TabIndex = 4
         Me.lst.Visible = False
         '
@@ -94,9 +94,9 @@ Partial Public Class frmIngresoBultos
         '
         Me.lblAT.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblAT.ForeColor = System.Drawing.Color.Red
-        Me.lblAT.Location = New System.Drawing.Point(0, 274)
+        Me.lblAT.Location = New System.Drawing.Point(230, 274)
         Me.lblAT.Name = "lblAT"
-        Me.lblAT.Size = New System.Drawing.Size(240, 20)
+        Me.lblAT.Size = New System.Drawing.Size(10, 20)
         Me.lblAT.Text = "Guardando..."
         Me.lblAT.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.lblAT.Visible = False

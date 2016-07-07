@@ -80,6 +80,7 @@ Public Class cRecepcionBultos
         dock_nom = 11
         zona = 12
         tipo_servicio = 13
+        expreso = 14
     End Enum
 
     Public Property Titulo() As String
@@ -177,6 +178,7 @@ Public Class cRecepcionBultos
                     Lst.Items.Add("Numero de remito: " & SearchRows(0).Item(View.nro_remito)).ToString()
                     Lst.Items.Add("Localidad: " & SearchRows(0).Item(View.idlocalidad))
                     Lst.Items.Add("Referencia: " & SearchRows(0).Item(View.idreferencia))
+                    Lst.Items.Add("Expreso: " & SearchRows(0).Item(View.expreso))
                     Lst.Items.Add("")
                     Lst.Items.Add("Cant.Total Bultos: " & SearchRows(0).Item(View.cantidad_bultos))
                     RegExistente = DSLecturas.Tables(0).Select("nro_bulto = '" & Lectura & "'")

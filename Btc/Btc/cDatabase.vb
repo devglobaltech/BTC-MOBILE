@@ -5,10 +5,11 @@ Public Class cDatabase
 
 #Region "Declaracion de Variables, constantes y Estructuras."
 
-    Private Const DatabaseError As String = "Se perdio la conexion con la base de datos."
-    Private Const ErrorPorReintentos As String = "Se completo la cantidad de reintentos de reconexion sin exito. La aplicacion sera cerrada."
-    Private Const ErrorDeConexion As String = "Se perdio la conexion a la base de datos, la aplicacion intentara reconectarse."
-    Private Const clsName As String = "BTC - Database."
+    Private Const Msg_DatabaseError As String = "Se perdio la conexion con la base de datos."
+    Private Const Msg_ErrorPorReintentos As String = "Se completo la cantidad de reintentos de reconexion sin exito. La aplicacion sera cerrada."
+    Private Const Msg_ErrorDeConexion As String = "Se perdio la conexion a la base de datos, la aplicacion intentara reconectarse."
+    Private Const Msg_clsName As String = "BTC - Database."
+
     Private Conexion As MySqlConnection
     Private Da As MySqlDataAdapter
     Private Cmd As MySqlCommand
@@ -72,7 +73,7 @@ Public Class cDatabase
 
             Select Case Conexion.State
                 Case ConnectionState.Broken, ConnectionState.Closed
-                    MsgBox(ErrorDeConexion, MsgBoxStyle.OkOnly, Titulo)
+                    MsgBox(Msg_ErrorDeConexion, MsgBoxStyle.OkOnly, Titulo)
                     Contador = 0
                     While Contador <> Me.IntentosConexion
                         Try
@@ -88,7 +89,7 @@ Public Class cDatabase
                         End Try
                     End While
                     If Contador = Me.IntentosConexion Then
-                        MsgBox(ErrorPorReintentos, MsgBoxStyle.Critical, Titulo)
+                        MsgBox(Msg_ErrorPorReintentos, MsgBoxStyle.Critical, Titulo)
                         Application.Exit()
                     End If
                 Case Else
@@ -96,10 +97,10 @@ Public Class cDatabase
             End Select
 
         Catch Ms As MySqlException
-            MsgBox(Ms.Message, MsgBoxStyle.Critical, clsName)
+            MsgBox(Ms.Message, MsgBoxStyle.Critical, Msg_clsName)
             Return False
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, clsName)
+            MsgBox(ex.Message, MsgBoxStyle.Critical, Msg_clsName)
             Return False
         End Try
     End Function
@@ -174,7 +175,7 @@ Public Class cDatabase
                 If TComando = TipoComando.Text Then Cmd.CommandType = CommandType.Text
                 Da.Fill(DS)
                 Return True
-            Else : MsgBox(DatabaseError, MsgBoxStyle.Information, clsName)
+            Else : MsgBox(Msg_DatabaseError, MsgBoxStyle.Information, Msg_clsName)
                 Return False
             End If
             Return True
@@ -200,7 +201,7 @@ Public Class cDatabase
                 If TComando = TipoComando.Text Then Cmd.CommandType = CommandType.Text
                 Cmd.ExecuteNonQuery()
                 Return True
-            Else : MsgBox(DatabaseError, MsgBoxStyle.Information, clsName)
+            Else : MsgBox(Msg_DatabaseError, MsgBoxStyle.Information, Msg_clsName)
                 Return False
             End If
             Return True
