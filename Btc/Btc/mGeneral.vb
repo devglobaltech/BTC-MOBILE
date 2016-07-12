@@ -13,7 +13,7 @@ Module mGeneral
     Public CantidadLecturas As Long = 0
 
     Public Sub Main()
-        Dim frm As New frmIngresoBultos, Path = AppPath(True)
+        Dim frm As New frmMenu, Path = AppPath(True)
         Try
             Dim strError As String = "", StrConn As String = ""
 

@@ -30,3 +30,6 @@ C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.vbproj.GenerateResource.Cache
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.exe
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.xml
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.pdb
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmError.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmHDR.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmMenu.resources

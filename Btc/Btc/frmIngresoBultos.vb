@@ -53,13 +53,13 @@ Public Class frmIngresoBultos
     End Sub
 
     Private Sub SalirApp()
-        Dim Msg As String = "¿Desea cerrar y salir de la aplicacion?"
+        Dim Msg As String = "¿Desea cerrar?"
         Dim msgSC As String = "¿Desea confirmar los registros antes de salir?"
         If cLN.RegistrosSinConfirmar > 0 Then
             cLN.ConfirmarRegistros()
         End If
         If MsgBox(Msg, MsgBoxStyle.YesNo, Titulo) = MsgBoxResult.Yes Then
-            Application.Exit()
+            Me.Close()
         Else
             Me.txtBultos.Focus()
         End If

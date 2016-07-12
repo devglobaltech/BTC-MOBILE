@@ -43,7 +43,7 @@ Partial Public Class frmIngresoBultos
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(240, 20)
         Me.btnSalir.TabIndex = 1
-        Me.btnSalir.Text = "F2) Cerrar y Salir"
+        Me.btnSalir.Text = "F2) Cerrar"
         '
         'lblTitulo
         '

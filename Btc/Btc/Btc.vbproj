@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cDatabase.vb" />
+    <Compile Include="cHDR.vb" />
     <Compile Include="cPlaySound.vb" />
     <Compile Include="cRecepcionBultos.vb" />
     <Compile Include="cSnd.vb" />
@@ -98,6 +99,12 @@
     <Compile Include="frmError.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmHDR.Designer.vb">
+      <DependentUpon>frmHDR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHDR.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIngresoBultos.Designer.vb">
       <DependentUpon>frmIngresoBultos.vb</DependentUpon>
     </Compile>
@@ -108,6 +115,12 @@
       <DependentUpon>frmIngresoBultosFaltantes.vb</DependentUpon>
     </Compile>
     <Compile Include="frmIngresoBultosFaltantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.vb">
+      <DependentUpon>frmMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mGeneral.vb" />
@@ -128,11 +141,17 @@
     <EmbeddedResource Include="frmError.resx">
       <DependentUpon>frmError.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHDR.resx">
+      <DependentUpon>frmHDR.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIngresoBultos.resx">
       <DependentUpon>frmIngresoBultos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngresoBultosFaltantes.resx">
       <DependentUpon>frmIngresoBultosFaltantes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
