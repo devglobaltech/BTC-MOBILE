@@ -9,7 +9,7 @@
         Try
             Me.lstMenu.Items.Clear()
             Me.lstMenu.Items.Add("1) Recepcion de bultos")
-            Me.lstMenu.Items.Add("2) Hoja de Ruta")
+            'Me.lstMenu.Items.Add("2) Hoja de Ruta")
             Me.lstMenu.Items.Add("3) Salir")
             txtOpcion.Text = ""
             txtOpcion.Focus()
@@ -49,16 +49,19 @@
                         Finally
                             Fa = Nothing
                         End Try
-                    Case "2"
-                        Dim Fb As New frmHDR
-                        Try
-                            Fb.ShowDialog()
-                        Catch ex As Exception
-                        Finally
-                            Fb = Nothing
-                        End Try
+                        'Case "2"
+                        '    Dim Fb As New frmHDR
+                        '    Try
+                        '        Fb.ShowDialog()
+                        '    Catch ex As Exception
+                        '    Finally
+                        '        Fb = Nothing
+                        '    End Try
                     Case "3"
                         SalirApp()
+                    Case Else
+                        Me.txtOpcion.Text = ""
+                        Me.txtOpcion.Focus()
                 End Select
                 Me.txtOpcion.Text = ""
             End If

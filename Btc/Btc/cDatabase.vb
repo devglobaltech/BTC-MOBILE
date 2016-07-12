@@ -9,7 +9,7 @@ Public Class cDatabase
     Private Const Msg_ErrorPorReintentos As String = "Se completo la cantidad de reintentos de reconexion sin exito. La aplicacion sera cerrada."
     Private Const Msg_ErrorDeConexion As String = "Se perdio la conexion a la base de datos, la aplicacion intentara reconectarse."
     Private Const Msg_clsName As String = "BTC - Database."
-
+    Private fError As New frmError
     Private Conexion As MySqlConnection
     Private Da As MySqlDataAdapter
     Private Cmd As MySqlCommand
@@ -36,6 +36,7 @@ Public Class cDatabase
         Conexion = Nothing
         Da = Nothing
         Cmd = Nothing
+        frmError = Nothing
         MyBase.Finalize()
     End Sub
 
@@ -73,7 +74,11 @@ Public Class cDatabase
 
             Select Case Conexion.State
                 Case ConnectionState.Broken, ConnectionState.Closed
-                    MsgBox(Msg_ErrorDeConexion, MsgBoxStyle.OkOnly, Titulo)
+
+                    'MsgBox(Msg_ErrorDeConexion, MsgBoxStyle.OkOnly, Titulo)
+                    fError.Mensaje = Msg_ErrorDeConexion
+                    fError.ShowDialog()
+
                     Contador = 0
                     While Contador <> Me.IntentosConexion
                         Try
@@ -89,8 +94,11 @@ Public Class cDatabase
                         End Try
                     End While
                     If Contador = Me.IntentosConexion Then
-                        MsgBox(Msg_ErrorPorReintentos, MsgBoxStyle.Critical, Titulo)
-                        Application.Exit()
+                        'MsgBox(Msg_ErrorPorReintentos, MsgBoxStyle.Critical, Titulo)
+                        fError.Mensaje = Msg_ErrorPorReintentos
+                        fError.ShowDialog()
+                        'Application.Exit()
+                        Return False
                     End If
                 Case Else
                     Return True
@@ -175,7 +183,7 @@ Public Class cDatabase
                 If TComando = TipoComando.Text Then Cmd.CommandType = CommandType.Text
                 Da.Fill(DS)
                 Return True
-            Else : MsgBox(Msg_DatabaseError, MsgBoxStyle.Information, Msg_clsName)
+            Else strError = Msg_DatabaseError
                 Return False
             End If
             Return True
@@ -190,10 +198,12 @@ Public Class cDatabase
 
     Public Function EjecutarSQL(ByVal ComandoSQL As String, ByVal TComando As TipoComando, Optional ByRef strError As String = "") As Boolean
         Try
+
             Try
                 Conexion.Ping()
             Catch ex As Exception
             End Try
+
             If VerificarConexion() Then
                 Cmd.CommandText = ComandoSQL
                 If TComando = TipoComando.StoredProcedure Then Cmd.CommandType = CommandType.StoredProcedure
@@ -201,7 +211,7 @@ Public Class cDatabase
                 If TComando = TipoComando.Text Then Cmd.CommandType = CommandType.Text
                 Cmd.ExecuteNonQuery()
                 Return True
-            Else : MsgBox(Msg_DatabaseError, MsgBoxStyle.Information, Msg_clsName)
+            Else : strError = Msg_DatabaseError
                 Return False
             End If
             Return True

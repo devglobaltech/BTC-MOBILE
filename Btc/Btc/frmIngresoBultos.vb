@@ -4,7 +4,7 @@ Imports System.Threading
 Public Class frmIngresoBultos
 
     Private cLN As cRecepcionBultos
-    Private Const CaracterFinal As String = "#"
+    Private Const CaracterFinal As String = "*"
     Private UltimaLectura As String = ""
 
 
@@ -105,17 +105,17 @@ Public Class frmIngresoBultos
             Threading.Thread.Sleep(tSleep)
 
             '3ra. intermitencia
-            For Each ctrl In Me.Controls
-                ctrl.BackColor = Color
-            Next
-            Application.DoEvents()
-            Threading.Thread.Sleep(tSleep)
+            'For Each ctrl In Me.Controls
+            '    ctrl.BackColor = Color
+            'Next
+            'Application.DoEvents()
+            'Threading.Thread.Sleep(tSleep)
 
-            '4ta. intermitencia
-            For Each ctrl In Me.Controls
-                ctrl.BackColor = backco
-            Next
-            Me.lblTitulo.BackColor = ColorTitulo
+            ''4ta. intermitencia
+            'For Each ctrl In Me.Controls
+            '    ctrl.BackColor = backco
+            'Next
+            'Me.lblTitulo.BackColor = ColorTitulo
             Application.DoEvents()
 
         Catch ex As Exception

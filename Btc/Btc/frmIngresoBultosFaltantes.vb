@@ -32,6 +32,7 @@ Public Class frmIngresoBultosFaltantes
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, Titulo)
+            Me.Close()
         Finally
             Data = Nothing
         End Try
