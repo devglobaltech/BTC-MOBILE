@@ -1,0 +1,8 @@
+CREATE TABLE mob_carta_porte_bultos_leidos (
+  idlectura INT(11) NOT NULL AUTO_INCREMENT,
+  idcarta_porte INT(11) NOT NULL,
+  idpedido INT(11) NOT NULL,
+  nro_bulto VARCHAR(100) NOT NULL,
+  fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (idlectura)
+) ENGINE=INNODB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8;

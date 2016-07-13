@@ -24,7 +24,10 @@ Partial Public Class frmHDR
         Me.btnCerrar = New System.Windows.Forms.Button
         Me.txtBulto = New System.Windows.Forms.TextBox
         Me.lblBulto = New System.Windows.Forms.Label
-        Me.lst = New System.Windows.Forms.ListBox
+        Me.lstHDR = New System.Windows.Forms.ListBox
+        Me.lstBULTO = New System.Windows.Forms.ListBox
+        Me.btnFinalizar = New System.Windows.Forms.Button
+        Me.btnPendientes = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'lblHDR
@@ -47,28 +50,55 @@ Partial Public Class frmHDR
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(233, 20)
         Me.btnCerrar.TabIndex = 2
-        Me.btnCerrar.Text = "F2) Cerrar"
+        Me.btnCerrar.Text = "F3) Cerrar"
         '
         'txtBulto
         '
-        Me.txtBulto.Location = New System.Drawing.Point(4, 175)
+        Me.txtBulto.Location = New System.Drawing.Point(4, 144)
         Me.txtBulto.Name = "txtBulto"
         Me.txtBulto.Size = New System.Drawing.Size(233, 21)
         Me.txtBulto.TabIndex = 4
         '
         'lblBulto
         '
-        Me.lblBulto.Location = New System.Drawing.Point(4, 153)
+        Me.lblBulto.Location = New System.Drawing.Point(4, 122)
         Me.lblBulto.Name = "lblBulto"
         Me.lblBulto.Size = New System.Drawing.Size(234, 20)
         Me.lblBulto.Text = "Ingrese Bulto"
         '
-        'lst
+        'lstHDR
         '
-        Me.lst.Location = New System.Drawing.Point(4, 50)
-        Me.lst.Name = "lst"
-        Me.lst.Size = New System.Drawing.Size(233, 100)
-        Me.lst.TabIndex = 6
+        Me.lstHDR.Items.Add("Datos del Chofer vehiculo")
+        Me.lstHDR.Items.Add("Cantidad de remitos: 10")
+        Me.lstHDR.Items.Add("Cantidad de Bultos: 999")
+        Me.lstHDR.Location = New System.Drawing.Point(4, 50)
+        Me.lstHDR.Name = "lstHDR"
+        Me.lstHDR.Size = New System.Drawing.Size(233, 58)
+        Me.lstHDR.TabIndex = 6
+        '
+        'lstBULTO
+        '
+        Me.lstBULTO.Items.Add("SUBIDOS AL CAMBION 1 DE N")
+        Me.lstBULTO.Location = New System.Drawing.Point(4, 168)
+        Me.lstBULTO.Name = "lstBULTO"
+        Me.lstBULTO.Size = New System.Drawing.Size(233, 30)
+        Me.lstBULTO.TabIndex = 9
+        '
+        'btnFinalizar
+        '
+        Me.btnFinalizar.Location = New System.Drawing.Point(4, 227)
+        Me.btnFinalizar.Name = "btnFinalizar"
+        Me.btnFinalizar.Size = New System.Drawing.Size(233, 20)
+        Me.btnFinalizar.TabIndex = 10
+        Me.btnFinalizar.Text = "F1) Finalizar"
+        '
+        'btnPendientes
+        '
+        Me.btnPendientes.Location = New System.Drawing.Point(4, 249)
+        Me.btnPendientes.Name = "btnPendientes"
+        Me.btnPendientes.Size = New System.Drawing.Size(233, 20)
+        Me.btnPendientes.TabIndex = 11
+        Me.btnPendientes.Text = "F2) Pendientes"
         '
         'frmHDR
         '
@@ -77,7 +107,10 @@ Partial Public Class frmHDR
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 294)
         Me.ControlBox = False
-        Me.Controls.Add(Me.lst)
+        Me.Controls.Add(Me.btnPendientes)
+        Me.Controls.Add(Me.btnFinalizar)
+        Me.Controls.Add(Me.lstBULTO)
+        Me.Controls.Add(Me.lstHDR)
         Me.Controls.Add(Me.txtBulto)
         Me.Controls.Add(Me.lblBulto)
         Me.Controls.Add(Me.btnCerrar)
@@ -93,5 +126,8 @@ Partial Public Class frmHDR
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents txtBulto As System.Windows.Forms.TextBox
     Friend WithEvents lblBulto As System.Windows.Forms.Label
-    Friend WithEvents lst As System.Windows.Forms.ListBox
+    Friend WithEvents lstHDR As System.Windows.Forms.ListBox
+    Friend WithEvents lstBULTO As System.Windows.Forms.ListBox
+    Friend WithEvents btnFinalizar As System.Windows.Forms.Button
+    Friend WithEvents btnPendientes As System.Windows.Forms.Button
 End Class

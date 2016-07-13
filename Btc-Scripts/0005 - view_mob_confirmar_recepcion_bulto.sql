@@ -16,7 +16,7 @@ SELECT	`p`.`idpedido`               AS `idpedido`,
 	`d`.`descripcion`            AS `dock_nom`,
 	`cp`.`zona`                  AS `zona`,
 	`ts`.`descripcion`           AS `tipo_servicio`,
-	`ex`.`razon_social`	     AS `expreso`
+	`ex`.`razon_social`	    	 AS `expreso`
 FROM 	`pedido` `p` JOIN `empresa` `e` 	ON (`p`.`idempresa` = `e`.`idempresa`)
 	JOIN `provincia` `prov`			ON (`p`.`idprovincia` = `prov`.`idprovincia`)
 	JOIN `dock` `d`				ON (`p`.`iddock` = `d`.`iddock`)
