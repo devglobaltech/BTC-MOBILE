@@ -2,7 +2,9 @@ CREATE VIEW `view_mob_carga_hdr`
 AS 
 	SELECT	p.nro_remito             AS nro_remito,
 		p.cantidad_bultos        AS cantidad_bultos,
-		vh.patente		 AS patente
+		vh.patente		 AS patente,
+		cpo.idcarta_porte	 AS hdr,
+		p.idpedido		 AS idpedido
 	FROM 	pedido p JOIN empresa e 		ON (p.idempresa = e.idempresa)
 		JOIN provincia prov			ON (p.idprovincia = prov.idprovincia)
 		JOIN dock d				ON (p.iddock = d.iddock)

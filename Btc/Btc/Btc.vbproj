@@ -105,6 +105,12 @@
     <Compile Include="frmHDR.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmHDRBultosFaltantes.Designer.vb">
+      <DependentUpon>frmHDRBultosFaltantes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmHDRBultosFaltantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIngresoBultos.Designer.vb">
       <DependentUpon>frmIngresoBultos.vb</DependentUpon>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHDR.resx">
       <DependentUpon>frmHDR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHDRBultosFaltantes.resx">
+      <DependentUpon>frmHDRBultosFaltantes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngresoBultos.resx">
       <DependentUpon>frmIngresoBultos.vb</DependentUpon>

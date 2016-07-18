@@ -35,3 +35,4 @@ C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.pdb
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmError.resources
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmHDR.resources
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmMenu.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Debug\Btc.frmHDRBultosFaltantes.resources

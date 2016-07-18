@@ -79,7 +79,7 @@ Partial Public Class frmHDR
         'lstBULTO
         '
         Me.lstBULTO.Items.Add("SUBIDOS AL CAMBION 1 DE N")
-        Me.lstBULTO.Location = New System.Drawing.Point(4, 168)
+        Me.lstBULTO.Location = New System.Drawing.Point(4, 169)
         Me.lstBULTO.Name = "lstBULTO"
         Me.lstBULTO.Size = New System.Drawing.Size(233, 30)
         Me.lstBULTO.TabIndex = 9
@@ -116,6 +116,7 @@ Partial Public Class frmHDR
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtHDR)
         Me.Controls.Add(Me.lblHDR)
+        Me.KeyPreview = True
         Me.Name = "frmHDR"
         Me.Text = "Cargar HDR"
         Me.ResumeLayout(False)

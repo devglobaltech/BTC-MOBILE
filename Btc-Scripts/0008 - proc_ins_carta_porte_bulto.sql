@@ -9,7 +9,8 @@ BEGIN
 	
 	SELECT 	COUNT(*) INTO v_ctn_lectura
 	FROM	mob_carta_porte_bultos_leidos
-	WHERE	idcarta_porte=p_idcarta_porte;
+	WHERE	idcarta_porte=p_idcarta_porte
+		AND nro_bulto=p_nro_bulto;
 
 	IF(v_ctn_lectura=0) THEN
 	

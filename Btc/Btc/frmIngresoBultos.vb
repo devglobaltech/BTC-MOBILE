@@ -148,6 +148,7 @@ Public Class frmIngresoBultos
                         Application.DoEvents()
                         SNOK.PlayOK()
                         CambiarColorPantalla(Color.GreenYellow)
+                        Me.txtBultos.BackColor = Color.GreenYellow
                         Me.txtBultos.Focus()
                     End If
                 Else
