@@ -155,8 +155,8 @@
                     Me.txtBulto.Focus()
                     Me.txtBulto.BackColor = Color.GreenYellow
                     If oHDR.VerificarCierreHDR(Me.txtHDR.Text) Then
-                        SNOK.PlayOK()
-                        MsgBox(MsgFinalizacion, MsgBoxStyle.OkOnly, Titulo)
+                        Finalizar()
+                        Exit Try
                     End If
                 Else
                     Me.txtBulto.Text = ""
@@ -235,8 +235,8 @@
     Private Sub Finalizar()
         Dim MSG_Finalizacion_NO As String = "Aun quedan pendientes subir bultos al transporte. No es posible finalizar la carta de porte."
         Dim MSG_Finalizacion_ERR As String = "Error al realizar el cierre de la carta de porte : "
-        Dim MSG_ConfirmaFin As String = "¿Confirma la finalizacion de la carta de porte?"
-        Dim F As New frmError, err As String = ""
+        Dim MSG_Finalizacion_OK As String = "Se completo la carga de la carta de porte correctamente."
+        Dim F As New frmError, err As String = "", Ok As New frmOK
         Try
             If Me.txtHDR.Text.Trim <> "" Then
                 If Me.txtBulto.Visible Then
@@ -245,12 +245,9 @@
                         F.ShowDialog()
                         Me.txtBulto.Focus()
                     Else
-                        If MsgBox(MSG_ConfirmaFin, MsgBoxStyle.YesNo, Titulo) = MsgBoxResult.No Then
-                            Me.txtBulto.Focus()
-                            Me.txtBulto.Text = ""
-                            Exit Sub
-                        End If
                         If oHDR.CierreCartaPorte(Me.txtHDR.Text, err) Then
+                            Ok.Mensaje = MSG_Finalizacion_OK
+                            Ok.ShowDialog()
                             Me.InicializarControles()
                             Me.txtHDR.Focus()
                         Else
@@ -267,6 +264,9 @@
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, Titulo)
+        Finally
+            Ok = Nothing
+            F = Nothing
         End Try
     End Sub
 

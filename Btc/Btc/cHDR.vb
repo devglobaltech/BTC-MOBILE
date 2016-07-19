@@ -37,7 +37,7 @@ Public Class cHDR
 
     Public Function ValidarHDR(ByVal HDR As String, ByRef LstCPO As ListBox) As Boolean
         Dim SQL As String = "", vError As String = "", fError As New frmError
-        Dim MSG_Error As String = "No se encontro la carta de porte ingresada."
+        Dim MSG_Error As String = "El estado de la carta de porte no permite realizar esta operacion."
         Try
             LstCPO.Items.Clear()
             MDS = Nothing
