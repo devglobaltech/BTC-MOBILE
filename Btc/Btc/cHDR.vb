@@ -37,7 +37,7 @@ Public Class cHDR
 
     Public Function ValidarHDR(ByVal HDR As String, ByRef LstCPO As ListBox) As Boolean
         Dim SQL As String = "", vError As String = "", fError As New frmError
-        Dim MSG_Error As String = "No existe la hoja de ruta ingresada."
+        Dim MSG_Error As String = "No se encontro la carta de porte ingresada."
         Try
             LstCPO.Items.Clear()
             MDS = Nothing
@@ -209,20 +209,23 @@ Public Class cHDR
     End Function
 
     Public Function GetCantLecturas(ByRef LstLecturas As ListBox, ByVal HDR As String) As Boolean
-        Dim DS As New DataSet, SQL As String = "", vError As String = "", Texto As String = ""
+        Dim DS As New DataSet, SQL As String = "", vError As String = "", Texto As String = "", Res As Long = 0
         Try
             LstLecturas.Items.Clear()
             SQL = "SELECT COUNT(nro_bulto)AS RES FROM mob_carta_porte_bultos_leidos WHERE idcarta_porte=" & HDR
-            If Not oBase.GetDataset(DS, SQL, cDatabase.TipoComando.Text, vError) Then
+            'If Not oBase.GetDataset(DS, SQL, cDatabase.TipoComando.Text, vError) Then
+            If Not oBase.EjecutarSQLEscalar(Res, SQL, cDatabase.TipoComando.Text, vError) Then
                 Snd.PlayNOK()
                 Throw New Exception(vError)
             Else
-                If DS.Tables.Count > 0 Then
-                    If DS.Tables(0).Rows.Count > 0 Then
-                        Texto = "SUBIDOS AL TRANSPORTE " & DS.Tables(0).Rows(0)(0) & " DE " & TotalBultos
-                        LstLecturas.Items.Add(Texto)
-                    End If
-                End If
+                'If DS.Tables.Count > 0 Then
+                '    If DS.Tables(0).Rows.Count > 0 Then
+                '        Texto = "SUBIDOS AL TRANSPORTE " & DS.Tables(0).Rows(0)(0) & " DE " & TotalBultos
+                '        LstLecturas.Items.Add(Texto)
+                '    End If
+                'End If
+                Texto = "SUBIDOS AL TRANSPORTE " & Res & " DE " & TotalBultos
+                LstLecturas.Items.Add(Texto)
             End If
             Return True
         Catch ex As Exception

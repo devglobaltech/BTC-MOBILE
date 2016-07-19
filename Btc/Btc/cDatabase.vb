@@ -22,6 +22,12 @@ Public Class cDatabase
         Text = 2
     End Enum
 
+    Enum TipoEjecucion
+        ExecuteNonQuery = 0
+        ExecuteReader = 1
+        ExecuteScalar = 2
+    End Enum
+
 #End Region
 
 #Region "Constructor y Destructor"
@@ -209,7 +215,9 @@ Public Class cDatabase
                 If TComando = TipoComando.StoredProcedure Then Cmd.CommandType = CommandType.StoredProcedure
                 If TComando = TipoComando.TableDirect Then Cmd.CommandType = CommandType.TableDirect
                 If TComando = TipoComando.Text Then Cmd.CommandType = CommandType.Text
+
                 Cmd.ExecuteNonQuery()
+
                 Return True
             Else : strError = Msg_DatabaseError
                 Return False
@@ -224,9 +232,34 @@ Public Class cDatabase
         End Try
     End Function
 
+    Public Function EjecutarSQLEscalar(ByRef Resultado As Long, ByVal ComandoSQL As String, ByVal TComando As TipoComando, Optional ByRef strError As String = "") As Boolean
+        Try
 
+            Try
+                Conexion.Ping()
+            Catch ex As Exception
+            End Try
 
+            If VerificarConexion() Then
+                Cmd.CommandText = ComandoSQL
+                If TComando = TipoComando.StoredProcedure Then Cmd.CommandType = CommandType.StoredProcedure
+                If TComando = TipoComando.TableDirect Then Cmd.CommandType = CommandType.TableDirect
+                If TComando = TipoComando.Text Then Cmd.CommandType = CommandType.Text
 
+                Resultado = CLng(Cmd.ExecuteScalar)
+                Return True
+            Else : strError = Msg_DatabaseError
+                Return False
+            End If
+            Return True
+        Catch Ms As MySqlException
+            strError = Ms.Number & " - " & Ms.Message
+            Return False
+        Catch ex As Exception
+            strError = ex.Message
+            Return False
+        End Try
+    End Function
 #End Region
 
 End Class

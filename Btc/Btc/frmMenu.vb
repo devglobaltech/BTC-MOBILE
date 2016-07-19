@@ -9,7 +9,7 @@
         Try
             Me.lstMenu.Items.Clear()
             Me.lstMenu.Items.Add("1) Recepcion de bultos")
-            Me.lstMenu.Items.Add("2) Hoja de Ruta")
+            Me.lstMenu.Items.Add("2) Carga por carta de porte.")
             Me.lstMenu.Items.Add("3) Salir")
             txtOpcion.Text = ""
             txtOpcion.Focus()

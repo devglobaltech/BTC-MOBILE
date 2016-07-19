@@ -35,7 +35,7 @@ Partial Public Class frmHDR
         Me.lblHDR.Location = New System.Drawing.Point(4, 4)
         Me.lblHDR.Name = "lblHDR"
         Me.lblHDR.Size = New System.Drawing.Size(233, 20)
-        Me.lblHDR.Text = "Ingrese Hoja de Ruta"
+        Me.lblHDR.Text = "Ingrese Carta de Porte"
         '
         'txtHDR
         '

@@ -90,7 +90,7 @@
     End Sub
 
     Private Sub ProcesarLecturaHDR(ByVal Lectura As String)
-        Dim LecturaHDR As String = "", MsgFinalizacion As String = "Se completo la carga de la hoja de porte. Presione F1 para finalizar."
+        Dim LecturaHDR As String = "", MsgFinalizacion As String = "Se completo la carga de la carta de porte. Presione F1 para finalizar."
         Try
             LecturaHDR = Replace(Lectura, CaracterFinal, "")
             If oHDR.ValidarHDR(LecturaHDR, Me.lstHDR) Then
@@ -137,7 +137,7 @@
     End Sub
 
     Private Sub ProcesarLecturaBULTO(ByRef Lectura As String)
-        Dim LecturaBULTO As String = "", MsgFinalizacion As String = "Se completo la carga de la hoja de porte. Presione F1 para finalizar."
+        Dim LecturaBULTO As String = "", MsgFinalizacion As String = "Se completo la carga de la carta de porte. Presione F1 para finalizar."
         Try
             LecturaBULTO = Replace(Lectura, CaracterFinal, "")
             If Not oHDR.ValidarLecturaBultos(LecturaBULTO) Then

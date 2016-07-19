@@ -55,7 +55,7 @@ Public Class frmHDRBultosFaltantes
     End Sub
 
     Private Sub ObtenerQuery()
-        Dim Query As String, Data As New DataSet, strError As String = ""
+        Dim Query As String = "", Data As New DataSet, strError As String = ""
         Try
             oBase.LimpiarParametros()
 
