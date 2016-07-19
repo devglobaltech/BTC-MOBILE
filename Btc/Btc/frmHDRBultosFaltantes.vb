@@ -82,4 +82,5 @@ Public Class frmHDRBultosFaltantes
     Private Sub Salir()
         Me.Close()
     End Sub
+
 End Class

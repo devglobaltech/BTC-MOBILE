@@ -1,1 +1,16 @@
-Productivamente no se instalo del 6 (inclusive) en adelante.
+LOG DE SCRIPTS.
+
+
+SE GENERAN LOS SCRIPTS PARA IMPLEMENTAR EL 20-07-2016.
+
+0011 - proc_mob_confirmar_expedicion_carta_porte
+0010 - idx_mob_carta_porte_bultos_leidos
+0009 - view_mob_restantes_hdr
+0008 - proc_ins_carta_porte_bulto
+0007 - mob_carta_porte_bultos_leidos
+0006 - view_mob_carga_hdr
+
+13-07-2016 - IMPLEMENTACION.
+
+SE IMPLEMENTA PRODUCTIVAMENTE LOS SCRIPTS:
+0005 - view_mob_confirmar_recepcion_bulto

@@ -128,20 +128,12 @@ Public Class frmIngresoBultos
         Dim Lectura As String = "", Encontro As Boolean = False, strError As String = "", fError As New frmError
         Try
             Lectura = Replace(Me.txtBultos.Text.Trim.ToUpper, CaracterFinal, "")
-            'If Lectura = UltimaLectura Then
-            '    Me.txtBultos.Text = ""
-            '    Me.txtBultos.Focus()
-            '    Exit Sub
-            'Else
-            '    UltimaLectura = Lectura
-            'End If
             If Not cLN.ValidarLecturaBulto(Lectura) Then
                 Me.txtBultos.Text = ""
                 fError.Mensaje = MsgBultoError
                 fError.ShowDialog()
                 Exit Try
             Else
-                'Aqui debo buscar si esta dentro del array.
                 If cLN.InfoLectura(Lectura.ToUpper.Trim, Me.lblDOCK, Me.lst, Encontro) Then
                     If Encontro Then
                         Me.txtBultos.Text = ""

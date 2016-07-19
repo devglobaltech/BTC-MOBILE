@@ -1,4 +1,4 @@
-CREATE VIEW `view_mob_carga_hdr` 
+CREATE VIEW view_mob_carga_hdr 
 AS 
 	SELECT	p.nro_remito             AS nro_remito,
 		p.cantidad_bultos        AS cantidad_bultos,
@@ -13,5 +13,5 @@ AS
 		INNER JOIN carta_porte_pedido cpp	ON (p.idpedido=cpp.idpedido)
 		INNER JOIN carta_porte cpo		ON (cpp.idcarta_porte=cpo.idcarta_porte)
 		INNER JOIN vehiculo vh			ON (cpo.idvehiculo=vh.idvehiculo)
-	WHERE	cpo.idstatus=cpo.idstatus
+	WHERE	p.idstatus IN(SELECT idstatus FROM evento_operacion WHERE idoperacion='MOB002')
 ;

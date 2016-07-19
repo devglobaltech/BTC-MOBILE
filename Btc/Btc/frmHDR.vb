@@ -26,6 +26,8 @@
     End Sub
 
     Private Sub InicializarControles()
+        Me.txtHDR.Enabled = True
+        Me.txtHDR.Text = ""
         Me.lstBULTO.Visible = False
         Me.lstBULTO.Items.Clear()
         Me.txtBulto.Visible = False
@@ -88,7 +90,7 @@
     End Sub
 
     Private Sub ProcesarLecturaHDR(ByVal Lectura As String)
-        Dim LecturaHDR As String = "", MsgFinalizacion As String = "La carta de porte se completo. Presione F1 para finalizar."
+        Dim LecturaHDR As String = "", MsgFinalizacion As String = "Se completo la carga de la hoja de porte. Presione F1 para finalizar."
         Try
             LecturaHDR = Replace(Lectura, CaracterFinal, "")
             If oHDR.ValidarHDR(LecturaHDR, Me.lstHDR) Then
@@ -135,7 +137,7 @@
     End Sub
 
     Private Sub ProcesarLecturaBULTO(ByRef Lectura As String)
-        Dim LecturaBULTO As String = "", MsgFinalizacion As String = "La carta de porte se completo. Presione F1 para finalizar."
+        Dim LecturaBULTO As String = "", MsgFinalizacion As String = "Se completo la carga de la hoja de porte. Presione F1 para finalizar."
         Try
             LecturaBULTO = Replace(Lectura, CaracterFinal, "")
             If Not oHDR.ValidarLecturaBultos(LecturaBULTO) Then
@@ -233,6 +235,7 @@
     Private Sub Finalizar()
         Dim MSG_Finalizacion_NO As String = "Aun quedan pendientes subir bultos al transporte. No es posible finalizar la carta de porte."
         Dim MSG_Finalizacion_ERR As String = "Error al realizar el cierre de la carta de porte : "
+        Dim MSG_ConfirmaFin As String = "¿Confirma la finalizacion de la carta de porte?"
         Dim F As New frmError, err As String = ""
         Try
             If Me.txtHDR.Text.Trim <> "" Then
@@ -242,6 +245,11 @@
                         F.ShowDialog()
                         Me.txtBulto.Focus()
                     Else
+                        If MsgBox(MSG_ConfirmaFin, MsgBoxStyle.YesNo, Titulo) = MsgBoxResult.No Then
+                            Me.txtBulto.Focus()
+                            Me.txtBulto.Text = ""
+                            Exit Sub
+                        End If
                         If oHDR.CierreCartaPorte(Me.txtHDR.Text, err) Then
                             Me.InicializarControles()
                             Me.txtHDR.Focus()
@@ -279,4 +287,5 @@
     Private Sub txtBulto_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBulto.TextChanged
 
     End Sub
+
 End Class

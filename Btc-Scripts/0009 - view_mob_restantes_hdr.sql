@@ -15,7 +15,7 @@ FROM 	pedido p JOIN empresa e 			ON (p.idempresa = e.idempresa)
 	INNER JOIN carta_porte cpo			ON (cpp.idcarta_porte=cpo.idcarta_porte)
 	INNER JOIN vehiculo vh				ON (cpo.idvehiculo=vh.idvehiculo)
 	LEFT JOIN mob_carta_porte_bultos_leidos bl	ON (p.idpedido=bl.idpedido)
-WHERE	cpo.idstatus=cpo.idstatus
+WHERE	p.idstatus IN(SELECT idstatus FROM evento_operacion WHERE idoperacion='MOB002')
 GROUP BY
 	p.nro_remito,
 	p.cantidad_bultos,
