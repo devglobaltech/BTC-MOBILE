@@ -75,6 +75,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cConfirmacionTransporte.vb" />
     <Compile Include="cDatabase.vb" />
     <Compile Include="cHDR.vb" />
     <Compile Include="cPlaySound.vb" />
@@ -91,6 +92,12 @@
       <DependentUpon>FormDS.vb</DependentUpon>
     </Compile>
     <Compile Include="FormDS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfirmacionTransporte.Designer.vb">
+      <DependentUpon>frmConfirmacionTransporte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfirmacionTransporte.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmError.Designer.vb">
@@ -149,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDS.resx">
       <DependentUpon>FormDS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfirmacionTransporte.resx">
+      <DependentUpon>frmConfirmacionTransporte.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmError.resx">
       <DependentUpon>frmError.vb</DependentUpon>

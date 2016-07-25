@@ -19,38 +19,32 @@ Partial Public Class frmHDRBultosFaltantes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHDRBultosFaltantes))
         Me.DataGrid1 = New System.Windows.Forms.DataGrid
         Me.btnSalir = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'DataGrid1
         '
+        resources.ApplyResources(Me.DataGrid1, "DataGrid1")
         Me.DataGrid1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.DataGrid1.Location = New System.Drawing.Point(0, 4)
         Me.DataGrid1.Name = "DataGrid1"
-        Me.DataGrid1.Size = New System.Drawing.Size(240, 261)
-        Me.DataGrid1.TabIndex = 5
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(0, 271)
+        resources.ApplyResources(Me.btnSalir, "btnSalir")
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(240, 20)
-        Me.btnSalir.TabIndex = 4
-        Me.btnSalir.Text = "F1) Cerrar y Salir"
         '
         'frmHDRBultosFaltantes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(240, 294)
+        resources.ApplyResources(Me, "$this")
         Me.ControlBox = False
         Me.Controls.Add(Me.DataGrid1)
         Me.Controls.Add(Me.btnSalir)
         Me.KeyPreview = True
         Me.Name = "frmHDRBultosFaltantes"
-        Me.Text = "Bultos Faltantes"
         Me.ResumeLayout(False)
 
     End Sub

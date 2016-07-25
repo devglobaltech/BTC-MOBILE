@@ -1,6 +1,10 @@
 LOG DE SCRIPTS.
 
+25-07-2016.
 
+0012 - proc_mob_carta_porte_insert_evento
+
+25-07-2016. IMPLEMENTACION.
 SE GENERAN LOS SCRIPTS PARA IMPLEMENTAR EL 20-07-2016.
 
 0011 - proc_mob_confirmar_expedicion_carta_porte

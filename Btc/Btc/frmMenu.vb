@@ -8,9 +8,10 @@
     Private Sub GenerarMenues()
         Try
             Me.lstMenu.Items.Clear()
-            Me.lstMenu.Items.Add("1) Recepcion de bultos")
+            Me.lstMenu.Items.Add("1) Recepcion de bultos.")
             Me.lstMenu.Items.Add("2) Carga por carta de porte.")
-            Me.lstMenu.Items.Add("3) Salir")
+            Me.lstMenu.Items.Add("3) Expedicion de Transporte.")
+            Me.lstMenu.Items.Add("9) Salir.")
             txtOpcion.Text = ""
             txtOpcion.Focus()
         Catch ex As Exception
@@ -58,6 +59,14 @@
                             Fb = Nothing
                         End Try
                     Case "3"
+                        Dim Ct As New frmConfirmacionTransporte
+                        Try
+                            Ct.ShowDialog()
+                        Catch ex As Exception
+                        Finally
+                            Ct = Nothing
+                        End Try
+                    Case "9"
                         SalirApp()
                     Case Else
                         Me.txtOpcion.Text = ""
