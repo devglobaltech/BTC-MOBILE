@@ -22,6 +22,7 @@ Partial Public Class frmConfirmacionTransporte
         Me.lblCartaPorte = New System.Windows.Forms.Label
         Me.txtHDR = New System.Windows.Forms.TextBox
         Me.btnCerrar = New System.Windows.Forms.Button
+        Me.lblUltimaConfirmacion = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'lblCartaPorte
@@ -46,12 +47,20 @@ Partial Public Class frmConfirmacionTransporte
         Me.btnCerrar.TabIndex = 3
         Me.btnCerrar.Text = "F3) Cerrar"
         '
+        'lblUltimaConfirmacion
+        '
+        Me.lblUltimaConfirmacion.Location = New System.Drawing.Point(4, 80)
+        Me.lblUltimaConfirmacion.Name = "lblUltimaConfirmacion"
+        Me.lblUltimaConfirmacion.Size = New System.Drawing.Size(233, 49)
+        '
         'frmConfirmacionTransporte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 294)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.lblUltimaConfirmacion)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtHDR)
         Me.Controls.Add(Me.lblCartaPorte)
@@ -64,4 +73,5 @@ Partial Public Class frmConfirmacionTransporte
     Friend WithEvents lblCartaPorte As System.Windows.Forms.Label
     Friend WithEvents txtHDR As System.Windows.Forms.TextBox
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
+    Friend WithEvents lblUltimaConfirmacion As System.Windows.Forms.Label
 End Class

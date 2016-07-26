@@ -9,6 +9,7 @@
 
     Private Sub txtHDR_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtHDR.KeyUp
         Dim MyPos As Integer = 0, Continuar As Boolean = False, Lectura As String = ""
+        Me.lblUltimaConfirmacion.Text = ""
         MyPos = InStr(Me.txtHDR.Text, CaracterFinal)
         If MyPos > 0 Then Continuar = True
 
@@ -30,7 +31,9 @@
                     If oConfirmacion.ConfirmaCartaPorte(LecturaHDR) Then
                         SNOK.PlayOK()
                         IntermitenciaPantalla(Color.GreenYellow)
+                        lblUltimaConfirmacion.Text = "Se confirmo la carta de porte " & LecturaHDR
                         Me.txtHDR.Text = ""
+                        Me.txtHDR.BackColor = Color.GreenYellow
                         Me.txtHDR.Focus()
                     End If
                 Else
