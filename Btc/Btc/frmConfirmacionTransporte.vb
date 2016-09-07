@@ -31,7 +31,7 @@
                     If oConfirmacion.ConfirmaCartaPorte(LecturaHDR) Then
                         SNOK.PlayOK()
                         IntermitenciaPantalla(Color.GreenYellow)
-                        lblUltimaConfirmacion.Text = "Se confirmo la carta de porte " & LecturaHDR
+                        lblUltimaConfirmacion.Text = "Se confirmo la carta de porte nro. " & LecturaHDR
                         Me.txtHDR.Text = ""
                         Me.txtHDR.BackColor = Color.GreenYellow
                         Me.txtHDR.Focus()
@@ -49,10 +49,6 @@
         End Try
     End Sub
 
-    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
     Private Sub frmConfirmacionTransporte_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyUp
         Select Case e.KeyCode
             Case Keys.F3
@@ -65,10 +61,6 @@
         Me.oConfirmacion.BaseDeDatos = oBase
         Me.oConfirmacion.Sound = SNOK
         Me.txtHDR.Focus()
-    End Sub
-
-    Private Sub txtHDR_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHDR.TextChanged
-
     End Sub
 
     Private Sub btnCerrar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click

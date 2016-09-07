@@ -35,3 +35,4 @@ C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmHDR.resources
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmMenu.resources
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmHDRBultosFaltantes.resources
 C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmOK.resources
+C:\Work\BTC-MOBILE\Btc\Btc\obj\Release\Btc.frmConfirmacionTransporte.resources

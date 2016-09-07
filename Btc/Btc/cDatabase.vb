@@ -1,4 +1,5 @@
 ﻿Imports System.Data
+
 Imports MySql.Data.MySqlClient
 
 Public Class cDatabase
@@ -164,6 +165,7 @@ Public Class cDatabase
             Conexion.Open()
             If Conexion.State = ConnectionState.Open Then
                 Me.Cmd = Me.Conexion.CreateCommand
+                Cmd.CommandTimeout = 20
                 Da = New MySqlDataAdapter(Cmd)
                 Return True
             Else
@@ -203,6 +205,7 @@ Public Class cDatabase
     End Function
 
     Public Function EjecutarSQL(ByVal ComandoSQL As String, ByVal TComando As TipoComando, Optional ByRef strError As String = "") As Boolean
+        Dim mCMD As MySqlCommand
         Try
 
             Try
@@ -211,6 +214,7 @@ Public Class cDatabase
             End Try
 
             If VerificarConexion() Then
+
                 Cmd.CommandText = ComandoSQL
                 If TComando = TipoComando.StoredProcedure Then Cmd.CommandType = CommandType.StoredProcedure
                 If TComando = TipoComando.TableDirect Then Cmd.CommandType = CommandType.TableDirect
@@ -229,6 +233,8 @@ Public Class cDatabase
         Catch ex As Exception
             strError = ex.Message
             Return False
+        Finally
+            mCMD = Nothing
         End Try
     End Function
 
