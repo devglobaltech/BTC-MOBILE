@@ -31,7 +31,7 @@
                     If oConfirmacion.ConfirmaCartaPorte(LecturaHDR) Then
                         SNOK.PlayOK()
                         IntermitenciaPantalla(Color.GreenYellow)
-                        lblUltimaConfirmacion.Text = "Se confirmo la carta de porte nro. " & LecturaHDR
+                        lblUltimaConfirmacion.Text = "Se expidio la carta de porte nro. " & LecturaHDR
                         Me.txtHDR.Text = ""
                         Me.txtHDR.BackColor = Color.GreenYellow
                         Me.txtHDR.Focus()
@@ -106,4 +106,8 @@
             MsgBox(ex.Message, MsgBoxStyle.Information, Titulo)
         End Try
     End Function
+
+    Private Sub txtHDR_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtHDR.TextChanged
+
+    End Sub
 End Class
