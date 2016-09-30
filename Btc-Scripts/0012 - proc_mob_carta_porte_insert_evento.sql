@@ -17,7 +17,8 @@ FROM 	pedido p INNER JOIN empresa e 			ON (p.idempresa = e.idempresa)
 	INNER JOIN carta_porte cpo			ON (cpp.idcarta_porte=cpo.idcarta_porte)
 	INNER JOIN evento_operacion eo			ON (p.idempresa=eo.idempresa)
 WHERE	cpo.idcarta_porte=p_idcarta_porte
-	AND eo.idoperacion=p_idoperacion;
+	AND eo.idoperacion=p_idoperacion
+	AND p.idtipo_operacion_actual IN(SELECT valor FROM parametros_procesos WHERE proceso_id='DESPACHO_CARTADEPORTE' AND parametro_id='DESPACHOS');
 
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;    
 

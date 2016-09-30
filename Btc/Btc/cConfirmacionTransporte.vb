@@ -54,6 +54,7 @@ Public Class cConfirmacionTransporte
             SQL = SQL & "           INNER JOIN carta_porte cpo		    ON (cpp.idcarta_porte=cpo.idcarta_porte)" & vbNewLine
             SQL = SQL & "   WHERE	CONCAT(p.idempresa,'-',p.idstatus) NOT IN(SELECT CONCAT(eo.idempresa,'-',eo.idstatus) FROM evento_operacion eo WHERE idoperacion='MOB003')" & vbNewLine
             SQL = SQL & "           AND cpo.idcarta_porte=" & HDR
+            SQL = SQL & "           AND p.idtipo_operacion_actual IN(SELECT valor FROM parametros_procesos WHERE proceso_id='DESPACHO_CARTADEPORTE' AND parametro_id='DESPACHOS')"
 
             If Not oBase.EjecutarSQLEscalar(Res, SQL, cDatabase.TipoComando.Text, vError) Then
                 Snd.PlayNOK()
