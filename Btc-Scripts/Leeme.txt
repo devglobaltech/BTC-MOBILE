@@ -1,5 +1,12 @@
 LOG DE SCRIPTS.
 
+30-09-2016
+SE IMPLEMENTA EN PRODUCCION LOS SCRIPTS
+0012 - proc_mob_carta_porte_insert_evento.sql
+0013 - view_mob_carga_hdr.sql
+0014 - view_mob_restantes_hdr.sql
+
+
 25-07-2016.
 
 0012 - proc_mob_carta_porte_insert_evento
