@@ -2,7 +2,7 @@
 
     Private Sub frmMenu_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         GenerarMenues()
-        Me.lblTitulo.Text = Titulo
+        Me.lblTitulo.Text = Titulo & " | Ver.: " & mVersion
     End Sub
 
     Private Sub GenerarMenues()
@@ -91,4 +91,7 @@
 
     End Sub
 
+    Private Sub lstMenu_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstMenu.SelectedIndexChanged
+
+    End Sub
 End Class

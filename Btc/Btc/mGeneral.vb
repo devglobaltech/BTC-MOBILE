@@ -8,12 +8,13 @@ Module mGeneral
     Public Const Titulo As String = "BTC - Mobile"
     Public oBase As New cDatabase
     Public SNOK As New cPlaySound
-    Public mVersion As String = "1.0.1.0"
+    Public mVersion As String = "1.0.5.0"
     Public TiempoGuardado As Long = 0
     Public CantidadLecturas As Long = 0
 
     Public Sub Main()
         Dim frm As New frmMenu, Path = AppPath(True)
+        Dim MSG_VERSION As String = "La version que intenta ejecutar no coincide con la definida en su sistema. La aplicacion se cerrara."
         Try
             Dim strError As String = "", StrConn As String = ""
 
@@ -24,6 +25,11 @@ Module mGeneral
                 If Not oBase.IniciarConexion(strError) Then
                     Throw New Exception(strError)
                 Else
+                    If Not ControlVersion() Then
+                        MsgBox(MSG_VERSION, MsgBoxStyle.Critical, Titulo)
+                        Application.Exit()
+                    End If
+
                     Threading.Thread.Sleep(1000)
                     frm.ShowDialog()
                     Application.Exit()
@@ -41,6 +47,35 @@ Module mGeneral
             frm = Nothing
         End Try
     End Sub
+
+    Public Function ControlVersion() As Boolean
+        Dim VersionDatabase As String = "", xSQL As String = "", DS As New DataSet, vError As String = ""
+
+        Try
+            xSQL = "SELECT valor FROM parametros_procesos WHERE proceso_id='BTC' AND subproceso_id='MOBILE' AND parametro_id='VERSION'"
+            If Not oBase.GetDataset(DS, xSQL, cDatabase.TipoComando.Text, VERROR) Then
+                Throw New Exception(vError)
+            Else
+                If DS.Tables.Count > 0 Then
+                    If DS.Tables(0).Rows.Count > 0 Then
+
+                        VersionDatabase = DS.Tables(0).Rows(0)(0).ToString
+
+                        If VersionDatabase = mVersion Then
+                            Return True
+                        End If
+
+                    End If
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox("La version de BTC Mobile no es correcta.", MsgBoxStyle.Information, "Depot Mobile")
+            Application.Exit()
+        Finally
+            DS = Nothing
+        End Try
+    End Function
 
     Public Function ReadDat(ByRef StringConnection As String) As Boolean
         '---------------------------------------------------
