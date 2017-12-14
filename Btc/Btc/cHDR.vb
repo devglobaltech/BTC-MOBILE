@@ -15,6 +15,7 @@ Public Class cHDR
         Patente = 2
         Hdr = 3
         idPedido = 4
+        idreferencia = 5
     End Enum
 
     Public Property Sound() As cPlaySound
@@ -127,12 +128,20 @@ Public Class cHDR
                 Throw New Exception(MsgEtiErr)
             End If
 
+            'If Not IsNumeric(idpedido) Then
+            'cSndNOK.PlayNOK()
+            'Throw New Exception(MsgEtiErr)
+            'End If
             If Not IsNumeric(idpedido) Then
-                'cSndNOK.PlayNOK()
-                Throw New Exception(MsgEtiErr)
+                SearchRows = MDS.Tables(0).Select("idreferencia = '" & idpedido & "'")
+                If SearchRows.Length > 0 Then
+                    idpedido = SearchRows(0).Item(View.idPedido)
+                    Lectura = idpedido & "-" & bulto
+                End If
+            Else
+                SearchRows = MDS.Tables(0).Select("idpedido = '" & idpedido & "'")
             End If
 
-            SearchRows = MDS.Tables(0).Select("idpedido = '" & idpedido & "'")
             If SearchRows.Length > 0 Then
                 If bulto <= SearchRows(0).Item(View.Bultos) Then
                     If GuardarLectura(HDR, idpedido, Lectura) Then
@@ -142,7 +151,7 @@ Public Class cHDR
                     Throw New Exception("El numero de bulto tomado es incorrecto.")
                 End If
             Else
-                Throw New Exception("No existe el numero de pedido " & idpedido)
+                Throw New Exception("No existe el numero de pedido/referencia " & idpedido)
             End If
         Catch ex As Exception
             fError.Mensaje = ex.Message
@@ -239,7 +248,7 @@ Public Class cHDR
         Dim SQL As String = "", vError As String = ""
         Try
 
-            SQL = "SELECT  nro_remito, cantidad_bultos as Cant_Bultos, restan AS leidos, idpedido as Pedido FROM view_mob_restantes_hdr where hdr=" & Hdr
+            SQL = "SELECT  nro_remito, cantidad_bultos as Cant_Bultos, restan AS leidos, idpedido as Pedido, idreferencia as Referencia FROM view_mob_restantes_hdr where hdr=" & Hdr
             If Not oBase.GetDataset(DS, SQL, cDatabase.TipoComando.Text, vError) Then
                 Snd.PlayNOK()
                 Throw New Exception(vError)

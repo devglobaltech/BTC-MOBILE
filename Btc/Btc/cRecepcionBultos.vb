@@ -138,8 +138,10 @@ Public Class cRecepcionBultos
         Dim MsgEtiErr As String = "La etiqueta escaneada es incorrecta.", fError As New frmError
         Dim SearchRows() As Data.DataRow, idpedido As String = "", bulto As String = ""
         Dim Search As String = "-", Pos As Integer = 0, Lec As String = Replace(Lectura, " ", "")
-        Dim RegExistente() As Data.DataRow
+        Dim RegExistente() As Data.DataRow, vLectura As String = Lectura
         Try
+            'PRO#12345678-1* ejemplo.
+
             Pos = InStr(Lec, Search)
             idpedido = Mid(Lec, 1, Pos - 1)
             bulto = Mid(Lec, Pos + 1, Len(Lec))
@@ -154,16 +156,33 @@ Public Class cRecepcionBultos
                 Throw New Exception(MsgEtiErr)
             End If
 
+            'If Not IsNumeric(idpedido) Then
+            'cSndNOK.PlayNOK()
+            'Throw New Exception(MsgEtiErr)
+            'End If
+
             If Not IsNumeric(idpedido) Then
-                'cSndNOK.PlayNOK()
-                Throw New Exception(MsgEtiErr)
+                SearchRows = Data.Tables(0).Select("idreferencia = '" & idpedido & "'")
+                If SearchRows.Length > 0 Then
+                    idpedido = SearchRows(0).Item(View.idpedido).ToString
+                    vLectura = idpedido & "-" & bulto
+                Else
+                    Me.LlenarDataset()
+                    SearchRows = Data.Tables(0).Select("idreferencia = '" & idpedido & "'")
+                    If SearchRows.Length > 0 Then
+                        idpedido = SearchRows(0).Item(View.idpedido).ToString
+                        vLectura = idpedido & "-" & bulto
+                    End If
+                End If
             End If
 
             'Por si paso mucho tiempo desde la ultima descarga del pedido y necesito recuperar los datos otra vez.
-            SearchRows = Data.Tables(0).Select("idpedido = '" & idpedido & "'")
-            If SearchRows.Length = 0 Then
-                Me.LlenarDataset()
+            If IsNumeric(idpedido) Then
                 SearchRows = Data.Tables(0).Select("idpedido = '" & idpedido & "'")
+                If SearchRows.Length = 0 Then
+                    Me.LlenarDataset()
+                    SearchRows = Data.Tables(0).Select("idpedido = '" & idpedido & "'")
+                End If
             End If
 
             If SearchRows.Length > 0 Then
@@ -182,9 +201,11 @@ Public Class cRecepcionBultos
                     Lst.Items.Add("")
                     Lst.Items.Add("Cant.Total Bultos: " & SearchRows(0).Item(View.cantidad_bultos))
                     RegExistente = DSLecturas.Tables(0).Select("nro_bulto = '" & Lectura & "'")
+
                     If RegExistente.Length = 0 Then
-                        RegistrosLeidos(Lectura, SearchRows(0).Item(View.idpedido).ToString, SearchRows(0).Item(View.nro_remito).ToString, SearchRows(0).Item(View.cantidad_bultos).ToString)
+                        RegistrosLeidos(vLectura, SearchRows(0).Item(View.idpedido).ToString, SearchRows(0).Item(View.nro_remito).ToString, SearchRows(0).Item(View.cantidad_bultos).ToString)
                     End If
+
                     SearchRows = DSLecturas.Tables(0).Select("idpedido = '" & idpedido & "'")
                     Lst.Items.Add("Bultos leidos por Ud. sin guardar.: " & SearchRows.Length)
                     Application.DoEvents()
@@ -201,7 +222,7 @@ Public Class cRecepcionBultos
                 End If
             Else
                 'cSndNOK.PlayNOK()
-                Throw New Exception("No existe el numero de pedido " & idpedido)
+                Throw New Exception("No existe el numero de pedido /referencia " & idpedido)
             End If
             Return True
         Catch ex As Exception
